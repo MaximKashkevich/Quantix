@@ -1,0 +1,156 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  password      String
+  fullName      String
+  avatarUrl     String
+  companyName   String
+  role          UserRole       @default(USER)
+  phone         String?
+  notifications Notification[]
+
+  orders           Order[]
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  userId      Int?
+  token       String
+  totalAmount Int
+  status      OrderStatus @default(CREATED)
+  paymentId   String?
+  items       OrderItem[]
+  fullName    String
+  email       String
+  phone       String
+
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+}
+
+model OrderItem {
+  id        Int         @id @default(autoincrement())
+  orderId   Int
+  order     Order       @relation(fields: [orderId], references: [id])
+  productId Int
+  product   ProductItem @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  quantity Int
+}
+
+model ProductItem {
+  id           Int         @id @default(autoincrement())
+  productId    Int
+  product      Product     @relation(fields: [productId], references: [id])
+  name         String
+  image        String
+  inStock      Int         @map("in_stock")
+  price        Decimal
+  UnitType     UnitType    @default(Kg) @map("unit_type")
+  PackType     PackType    @default(Box) @map("pack_type")
+  UnitPerPack  Int         @map("unit_per_pack")
+  PricePerPack Decimal     @map("price_per_pack")
+  orders       OrderItem[]
+  categoryId   Int         @map("category_id")
+  category     Category    @relation(fields: [categoryId], references: [id])
+  description  String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Product {
+  id          Int           @id @default(autoincrement())
+  description String
+  price       Decimal
+  items       ProductItem[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  categoryId  Int
+  category    Category      @relation(fields: [categoryId], references: [id])
+}
+
+model Message {
+  id      Int      @id @default(autoincrement())
+  content String
+  sentAt  DateTime @default(now())
+
+  // Кто отправил
+  sender   User @relation("SentMessages", fields: [senderId], references: [id])
+  senderId Int
+
+  // Кто получил
+  receiver   User @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  receiverId Int
+
+  // Привязка к заказу
+  order   Order @relation(fields: [orderId], references: [id])
+  orderId Int
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id       Int           @id @default(autoincrement())
+  name     String
+  products Product[]
+  items    ProductItem[]
+}
+
+enum UnitType {
+  Kg
+  Each
+  Bottle
+}
+
+enum PackType {
+  Box
+  Bunch
+}
+
+enum OrderStatus {
+  CREATED
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
