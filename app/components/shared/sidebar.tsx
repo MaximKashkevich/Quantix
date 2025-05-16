@@ -1,6 +1,9 @@
+'use client'
+
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 
 interface SidebarProps {
@@ -51,23 +54,30 @@ const SIDEBAR_ITEMS: SidebarProps[] = [
 ]
 
 export const Sidebar: FC = () => {
+	const pathName = usePathname()
 	return (
 		<aside className='mt-6 flex flex-col gap-4'>
-			<Link href='/'>
+			<Link href='/profile'>
 				<Avatar>
 					<AvatarImage src='/sidebar/avatar.svg' alt='home' />
 				</Avatar>
 			</Link>
-			{SIDEBAR_ITEMS.map(item => (
-				<Link href={item.pathName} key={item.id}>
-					<Image
-						width={35}
-						height={35}
-						src={item.iconsUrl}
-						alt={item.alt}
-					></Image>
-				</Link>
-			))}
+			{SIDEBAR_ITEMS.map(item => {
+				const isActive = pathName === item.pathName
+				return (
+					<Link href={item.pathName} key={item.id}>
+						<Image
+							width={35}
+							height={35}
+							src={item.iconsUrl}
+							alt={item.alt}
+							className={` ${
+								isActive ? 'text-white' : 'bg-transparent'
+							} hover:scale-110 transition-transform`}
+						/>
+					</Link>
+				)
+			})}
 		</aside>
 	)
 }
