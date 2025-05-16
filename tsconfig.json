@@ -1,5 +1,20 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./app/*"
+      ],
+      "@components/*": [
+        "./app/components/*"
+      ],
+      "@shared/*": [
+        "./app/components/shared/*"
+      ],
+      "@lib/*": [
+        "./app/lib/*"
+      ]
+    },
     "target": "ESNext",
     "module": "CommonJS",
     "moduleResolution": "Node",
@@ -25,8 +40,9 @@
     ]
   },
   "include": [
-    "prisma/**/*.ts",
-    "src/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [

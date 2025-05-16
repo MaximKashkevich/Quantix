@@ -1,7 +1,7 @@
 export const products = [
 	{
 		sku: '12345',
-		imageUrl: '/apple.svg',
+		imageUrl: '/products/apple.svg',
 		name: 'Apple',
 		inStock: 15,
 		unitType: 'Kg',
@@ -13,7 +13,7 @@ export const products = [
 	},
 	{
 		sku: '12344',
-		imageUrl: '/Avocado.svg',
+		imageUrl: '/products/Avocado.svg',
 		name: 'Avocado',
 		inStock: 20,
 		unitType: 'Each',
@@ -25,7 +25,7 @@ export const products = [
 	},
 	{
 		sku: '12343',
-		imageUrl: '/Banana.svg',
+		imageUrl: '/products/Banana.svg',
 		name: 'Banana',
 		inStock: 36,
 		unitType: 'Each',
@@ -37,8 +37,7 @@ export const products = [
 	},
 	{
 		sku: '12342',
-		imageUrl: '/Beef.svg',
-
+		imageUrl: '/products/Beef.svg',
 		name: 'Beef',
 		inStock: 15,
 		unitType: 'Kg',
@@ -50,8 +49,7 @@ export const products = [
 	},
 	{
 		sku: '12341',
-		imageUrl: '/Bread.svg',
-
+		imageUrl: '/products/Bread.svg',
 		name: 'Bread',
 		inStock: 20,
 		unitType: 'Each',
@@ -63,8 +61,7 @@ export const products = [
 	},
 	{
 		sku: '12340',
-		imageUrl: '/Chicken.svg',
-
+		imageUrl: '/products/Chicken.svg',
 		name: 'Chicken',
 		inStock: 5,
 		unitType: 'Kg',
@@ -76,8 +73,7 @@ export const products = [
 	},
 	{
 		sku: '12339',
-		imageUrl: '/Chocolate.svg',
-
+		imageUrl: '/products/Chocolate.svg',
 		name: 'Chocolate',
 		inStock: 120,
 		unitType: 'Each',
@@ -89,8 +85,7 @@ export const products = [
 	},
 	{
 		sku: '12338',
-		imageUrl: '/Coffee.svg',
-
+		imageUrl: '/products/Coffee.svg',
 		name: 'Coffee',
 		inStock: 10,
 		unitType: 'Kg',
@@ -102,8 +97,7 @@ export const products = [
 	},
 	{
 		sku: '12337',
-		imageUrl: '/Milk.svg',
-
+		imageUrl: '/products/Milk.svg',
 		name: 'Milk',
 		inStock: 250,
 		unitType: 'Bottle',
@@ -115,8 +109,7 @@ export const products = [
 	},
 	{
 		sku: '12336',
-		imageUrl: '/OrangeJuice.svg',
-
+		imageUrl: '/products/OrangeJuice.svg',
 		name: 'Orange juice',
 		inStock: 20,
 		unitType: 'Bottle',
@@ -128,8 +121,7 @@ export const products = [
 	},
 	{
 		sku: '12335',
-		imageUrl: '/Salmon.svg',
-
+		imageUrl: '/products/Salmon.svg',
 		name: 'Salmon',
 		inStock: 25,
 		unitType: 'Kg',
@@ -141,7 +133,7 @@ export const products = [
 	},
 	{
 		sku: '12334',
-		imageUrl: '/Tomato.svg',
+		imageUrl: '/products/Tomato.svg',
 		name: 'Tomato',
 		inStock: 10,
 		unitType: 'Kg',
