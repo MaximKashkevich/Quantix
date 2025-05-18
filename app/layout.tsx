@@ -24,8 +24,10 @@ export default function RootLayout({
 			<body className='min-h-screen antialiased'>
 				<div className='container mx-auto p-4'>
 					<Header />
-					<Sidebar />
-					{children}
+					<main className='flex gap-4 mt-4'>
+						<Sidebar />
+						{children}
+					</main>
 				</div>
 			</body>
 		</html>

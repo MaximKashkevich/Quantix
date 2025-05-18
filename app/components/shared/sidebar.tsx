@@ -56,7 +56,7 @@ const SIDEBAR_ITEMS: SidebarProps[] = [
 export const Sidebar: FC = () => {
 	const pathName = usePathname()
 	return (
-		<aside className='mt-6 flex flex-col gap-4'>
+		<aside className=' flex flex-col gap-4'>
 			<Link href='/profile'>
 				<Avatar>
 					<AvatarImage src='/sidebar/avatar.svg' alt='home' />
@@ -72,7 +72,7 @@ export const Sidebar: FC = () => {
 							src={item.iconsUrl}
 							alt={item.alt}
 							className={` ${
-								isActive ? 'text-white' : 'bg-transparent'
+								isActive ? '' : ''
 							} hover:scale-110 transition-transform`}
 						/>
 					</Link>
