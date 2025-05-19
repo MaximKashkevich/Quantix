@@ -19,7 +19,7 @@ export default function Products() {
 						<input className='outline-none' type='text' placeholder='Search' />
 					</div>
 
-					<Button color='' className='shadow-sm'>
+					<Button className='shadow-sm bg-white'>
 						<SlidersHorizontal />
 						Filters
 					</Button>
@@ -27,14 +27,15 @@ export default function Products() {
 				{/*  */}
 				<div className='flex items-center gap-4'>
 					<div>
-						<Button className='shadow-sm'>
+						<Button className='shadow-sm bg-black text-white'>
 							<Download />
 							Import product list
 						</Button>
 					</div>
-					<Button className='shadow-sm'>Add new product</Button>
+					<Button className='shadow-sm bg-white'>Add new product</Button>
 				</div>
 			</header>
+			<main></main>
 		</div>
 	)
 }

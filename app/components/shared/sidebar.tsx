@@ -56,7 +56,7 @@ const SIDEBAR_ITEMS: SidebarProps[] = [
 export const Sidebar: FC = () => {
 	const pathName = usePathname()
 	return (
-		<aside className=' flex flex-col gap-4'>
+		<aside className=' flex flex-col gap-6'>
 			<Link href='/profile'>
 				<Avatar>
 					<AvatarImage src='/sidebar/avatar.svg' alt='home' />
