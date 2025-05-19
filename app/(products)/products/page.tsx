@@ -1,5 +1,5 @@
-import { Title } from '@/components/shared'
-import { Button } from '@/components/ui/button'
+import { Title } from 'components/shared'
+import { Button } from 'components/ui/button'
 import { Download, SlidersHorizontal } from 'lucide-react'
 import Image from 'next/image'
 

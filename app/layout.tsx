@@ -1,4 +1,4 @@
-import { Header, Sidebar } from '@/components/shared/index'
+import { Header, Sidebar } from 'components/shared/index'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.css'

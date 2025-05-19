@@ -1,4 +1,4 @@
-import { Title } from '@/components/shared/index'
+import { Title } from 'components/shared/index'
 import Image from 'next/image'
 import { FC } from 'react'
 

@@ -74,6 +74,7 @@ model ProductItem {
   categoryId   Int         @map("category_id")
   category     Category    @relation(fields: [categoryId], references: [id])
   description  String
+  quantity     Int
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 }
@@ -83,6 +84,7 @@ model Product {
   description String
   price       Decimal
   items       ProductItem[]
+  quantity    Int
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   categoryId  Int
