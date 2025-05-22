@@ -89,6 +89,7 @@ async function seedProducts() {
 				description: product.description,
 				price: product.pricePerPack,
 				categoryId: categoryMap[product.category],
+				quantity: product.inStock,
 			},
 		})
 
@@ -105,8 +106,10 @@ async function seedProducts() {
 				PricePerPack: product.pricePerPack,
 				categoryId: categoryMap[product.category],
 				description: product.description,
+				quantity: product.inStock,
 			},
 		})
+		console.log('Creating product:', product.name)
 	}
 }
 
