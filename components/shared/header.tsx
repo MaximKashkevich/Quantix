@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = () => {
 					width={33}
 					height={33}
 				/>
-				<Title className='font-medium text-white' text={'EXCELLENT'} />
+				<Title className='font-medium text-white' text={'QUANTIX'} />
 			</div>
 		</header>
 	)
