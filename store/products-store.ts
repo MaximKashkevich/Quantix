@@ -21,7 +21,10 @@ export const useProductStore = create<IProductStore>(set => ({
 			const data = await Api.products.search('')
 			set({ items: data, loading: false })
 		} catch (e) {
+			console.log(`ERROR PRODUCTS ${e}`)
 			set({ error: true, loading: false })
+		} finally {
+			set({ loading: false })
 		}
 	},
 }))

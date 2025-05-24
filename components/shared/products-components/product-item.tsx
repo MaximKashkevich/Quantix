@@ -31,10 +31,10 @@ export const ProductItem: FC<ProductItemProps> = () => {
 						<div className='flex items-center gap-2'>
 							<Checkbox className='h-4 w-4' />
 							<HoverCard>
-								<HoverCardTrigger className='whitespace-nowrap'>
+								<HoverCardTrigger className='whitespace-nowrap text-orange-400 font-medium underline underline'>
 									{/* {item.sku || 'N/A'} */}N/A
 								</HoverCardTrigger>
-								<HoverCardContent className='max-w-[300px] text-sm p-2'>
+								<HoverCardContent className='max-w-[300px] text-sm '>
 									{item.description || 'No description available'}
 								</HoverCardContent>
 							</HoverCard>

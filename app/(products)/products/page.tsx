@@ -1,13 +1,15 @@
 'use client'
 
-import { ProductItem } from '@components/shared/products-components/product-item'
+import { FilterMenu, ProductItem } from '@components/shared/products-components'
 import { Checkbox } from '@components/ui/checkbox'
-import { Title } from 'components/shared'
+import { Title, Wrapper } from 'components/shared'
 import { Button } from 'components/ui/button'
 import { Download, SlidersHorizontal } from 'lucide-react'
 import Image from 'next/image'
+import { useStateStore } from 'store/state-store'
 
 export default function Products() {
+	const { filterMenu, setFilterMenu } = useStateStore()
 	interface IOptionsProduct {
 		id: number
 		name: string
@@ -24,7 +26,8 @@ export default function Products() {
 	]
 
 	return (
-		<div className='h-full w-full rounded-2xl bg-gray-50'>
+		<Wrapper>
+			{/* TODO ВЫНЕСТИ В ОТДЕЛЬНЫЙ КОМПОНЕНТ */}
 			<header className='flex flex-wrap items-center justify-between gap-4 p-4'>
 				<div className='flex flex-wrap items-center gap-4'>
 					<Title className='font-medium' size='md' text='Products' />
@@ -43,10 +46,18 @@ export default function Products() {
 						/>
 					</div>
 
-					<Button className='shadow-sm bg-white'>
-						<SlidersHorizontal className='mr-2' size={16} />
-						Filters
-					</Button>
+					<div className='relative'>
+						<Button onClick={setFilterMenu} className='shadow-sm bg-white'>
+							<SlidersHorizontal className='mr-2' size={16} />
+							Filters
+						</Button>
+
+						{filterMenu && (
+							<div className='absolute top-full left-0 mt-1 w-full animate-[fadeIn_0.3s_ease-in-out]'>
+								<FilterMenu />
+							</div>
+						)}
+					</div>
 				</div>
 
 				<div className='flex flex-wrap items-center gap-4'>
@@ -88,6 +99,6 @@ export default function Products() {
 					<ProductItem />
 				</section>
 			</main>
-		</div>
+		</Wrapper>
 	)
 }
